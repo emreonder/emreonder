@@ -1,5 +1,6 @@
-# 💫 About Me:
-### <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Makine_ve_Kimya_End%C3%BCstrisi_Kurumu_logo.svg/800px-Makine_ve_Kimya_End%C3%BCstrisi_Kurumu_logo.svg.png" data-canonical-src="https://www.mke.gov.tr" width="100" height="100" /> Yazılım Takım Lideri @ MAKİNE VE KİMYA ENDÜSTRİSİ A.Ş
+### 
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Makine_ve_Kimya_End%C3%BCstrisi_Kurumu_logo.svg/800px-Makine_ve_Kimya_End%C3%BCstrisi_Kurumu_logo.svg.png" data-canonical-src="https://www.mke.gov.tr" width="100" height="100" /> | <h2>Yazılım Takım Lideri</h2> @ MAKİNE VE KİMYA ENDÜSTRİSİ A.Ş |                                                                                                                                                   
+| --- | --- |    
 
 ## 🌐 Socials:
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/_emre.onder_) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/emre-önder-80572646) [![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?logo=stack-overflow&logoColor=white)](https://stackoverflow.com/users/12535510) [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?logo=Twitter&logoColor=white)](https://twitter.com/@emr_ondr) 
