@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CryptoDesk — DeFi Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     SIDEBAR
+═══════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <!-- Logo -->
+  <div class="sidebar__logo">
+    <div class="logo-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="10" stroke="#7c3aed" stroke-width="2"/>
+        <path d="M7 11h8M11 7l4 4-4 4" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="logo-text">CryptoDesk</span>
+    <button class="sidebar__close" id="sidebar-close">✕</button>
+  </div>
+
+  <!-- Nav -->
+  <nav class="sidebar__nav">
+    <div class="nav-group">
+      <span class="nav-label">MAIN MENU</span>
+      <a href="#" class="nav-item nav-item--active">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+        Dashboard
+        <span class="nav-badge">New</span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Portfolio
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 6 23 6 23 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Markets
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        History
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Wallet
+        <span class="nav-badge nav-badge--green">3</span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        NFTs
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">DEFI</span>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Staking
+        <span class="nav-badge nav-badge--purple">APY 12%</span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 00-2 2v3M21 8V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3M16 21h3a2 2 0 002-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Swap
+      </a>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Earn
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <span class="nav-label">SETTINGS</span>
+      <a href="#" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.8"/></svg>
+        Settings
+      </a>
+    </div>
+  </nav>
+
+  <!-- Upgrade Banner -->
+  <div class="sidebar__upgrade">
+    <div class="upgrade-icon">⚡</div>
+    <p class="upgrade-title">Upgrade to Pro</p>
+    <p class="upgrade-sub">Unlock advanced analytics, real-time alerts & priority support.</p>
+    <a href="#" class="btn-upgrade">Upgrade Now</a>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════ -->
+<div class="main-wrapper">
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="topbar__search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input type="text" placeholder="Search coins, NFTs, wallets…" />
+      </div>
+    </div>
+
+    <div class="topbar__right">
+      <!-- Gas -->
+      <div class="topbar__gas">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M3 22V7l9-5 9 5v15" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="9" y="12" width="6" height="10" rx="1" stroke="#f97316" stroke-width="1.8"/></svg>
+        <span id="gas-price">24 Gwei</span>
+      </div>
+
+      <!-- Network -->
+      <div class="topbar__network">
+        <span class="network-dot"></span>
+        Ethereum
+      </div>
+
+      <!-- Notifications -->
+      <button class="topbar__icon-btn" aria-label="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.73 21a2 2 0 01-3.46 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="notif-dot"></span>
+      </button>
+
+      <!-- Theme -->
+      <button class="topbar__icon-btn" id="theme-toggle" aria-label="Toggle theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <!-- User -->
+      <div class="topbar__user">
+        <div class="user-avatar">AK</div>
+        <div class="user-info">
+          <span class="user-name">Alex Kim</span>
+          <span class="user-tag">Pro Member</span>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── PAGE CONTENT ── -->
+  <main class="page-content">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Welcome back, Alex 👋 Here's your portfolio overview.</p>
+      </div>
+      <div class="page-title__actions">
+        <button class="btn btn--outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export
+        </button>
+        <button class="btn btn--primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Add Asset
+        </button>
+      </div>
+    </div>
+
+    <!-- ─ STAT CARDS ─ -->
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">Total Portfolio</span>
+          <div class="stat-card__icon stat-card__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="currentColor" stroke-width="1.8"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="stat-card__value" id="total-portfolio">$148,392.50</div>
+        <div class="stat-card__change stat-card__change--up">
+          <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polyline points="18 15 12 9 6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          +$4,213.80 (2.92%)
+        </div>
+        <div class="stat-card__sparkline">
+          <svg viewBox="0 0 120 40" fill="none" preserveAspectRatio="none">
+            <defs><linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.25"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 35 L10 28 L20 30 L30 22 L40 25 L50 18 L60 20 L70 12 L80 15 L90 8 L100 10 L110 5 L120 8" stroke="#6366f1" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M0 35 L10 28 L20 30 L30 22 L40 25 L50 18 L60 20 L70 12 L80 15 L90 8 L100 10 L110 5 L120 8 L120 40 L0 40Z" fill="url(#sg1)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">24h P&amp;L</span>
+          <div class="stat-card__icon stat-card__icon--green">
+            <svg viewBox="0 0 24 24" fill="none"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="17 6 23 6 23 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="stat-card__value stat-card__value--green">+$4,213.80</div>
+        <div class="stat-card__change stat-card__change--up">
+          <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polyline points="18 15 12 9 6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          +2.92% today
+        </div>
+        <div class="stat-card__sparkline">
+          <svg viewBox="0 0 120 40" fill="none" preserveAspectRatio="none">
+            <defs><linearGradient id="sg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/><stop offset="100%" stop-color="#10b981" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 30 L15 25 L25 28 L35 15 L50 18 L60 10 L75 12 L85 6 L100 8 L110 4 L120 6" stroke="#10b981" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M0 30 L15 25 L25 28 L35 15 L50 18 L60 10 L75 12 L85 6 L100 8 L110 4 L120 6 L120 40 L0 40Z" fill="url(#sg2)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">BTC Dominance</span>
+          <div class="stat-card__icon stat-card__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="stat-card__value">49.3%</div>
+        <div class="stat-card__change stat-card__change--down">
+          <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          −0.4% from yesterday
+        </div>
+        <div class="stat-card__sparkline">
+          <svg viewBox="0 0 120 40" fill="none" preserveAspectRatio="none">
+            <defs><linearGradient id="sg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f97316" stop-opacity="0.25"/><stop offset="100%" stop-color="#f97316" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 10 L15 12 L30 8 L45 15 L55 18 L65 14 L80 20 L90 25 L105 22 L120 28" stroke="#f97316" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M0 10 L15 12 L30 8 L45 15 L55 18 L65 14 L80 20 L90 25 L105 22 L120 28 L120 40 L0 40Z" fill="url(#sg3)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-card__header">
+          <span class="stat-card__label">Market Cap</span>
+          <div class="stat-card__icon stat-card__icon--purple">
+            <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="20" x2="18" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="12" y1="20" x2="12" y2="4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><line x1="6" y1="20" x2="6" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="stat-card__value">$2.41T</div>
+        <div class="stat-card__change stat-card__change--up">
+          <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polyline points="18 15 12 9 6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          +1.14% (24h)
+        </div>
+        <div class="stat-card__sparkline">
+          <svg viewBox="0 0 120 40" fill="none" preserveAspectRatio="none">
+            <defs><linearGradient id="sg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a855f7" stop-opacity="0.25"/><stop offset="100%" stop-color="#a855f7" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 32 L15 28 L30 30 L40 22 L55 20 L65 15 L80 18 L90 12 L105 10 L120 7" stroke="#a855f7" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M0 32 L15 28 L30 30 L40 22 L55 20 L65 15 L80 18 L90 12 L105 10 L120 7 L120 40 L0 40Z" fill="url(#sg4)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ CHART + ALLOCATION ─ -->
+    <div class="chart-section">
+      <!-- Main Chart -->
+      <div class="chart-card">
+        <div class="chart-card__header">
+          <div>
+            <h2 class="chart-card__title">Portfolio Performance</h2>
+            <p class="chart-card__sub">Bitcoin · Ethereum · Solana · Others</p>
+          </div>
+          <div class="chart-tabs">
+            <button class="chart-tab">1D</button>
+            <button class="chart-tab chart-tab--active">1W</button>
+            <button class="chart-tab">1M</button>
+            <button class="chart-tab">3M</button>
+            <button class="chart-tab">1Y</button>
+          </div>
+        </div>
+
+        <!-- SVG Chart -->
+        <div class="chart-wrap">
+          <svg id="main-chart" viewBox="0 0 800 260" preserveAspectRatio="none" fill="none">
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#6366f1" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- Grid lines -->
+            <line x1="0" y1="52" x2="800" y2="52" stroke="#ffffff08" stroke-width="1"/>
+            <line x1="0" y1="104" x2="800" y2="104" stroke="#ffffff08" stroke-width="1"/>
+            <line x1="0" y1="156" x2="800" y2="156" stroke="#ffffff08" stroke-width="1"/>
+            <line x1="0" y1="208" x2="800" y2="208" stroke="#ffffff08" stroke-width="1"/>
+            <!-- Area -->
+            <path id="chart-area" d="M0 210 C40 195,80 180,120 170 C160 160,200 185,240 165 C280 145,320 120,360 105 C400 90,440 115,480 95 C520 75,560 60,600 45 C640 30,680 50,720 38 C760 26,800 30,800 30 L800 260 L0 260 Z" fill="url(#chartGrad)"/>
+            <!-- Line -->
+            <path id="chart-line" d="M0 210 C40 195,80 180,120 170 C160 160,200 185,240 165 C280 145,320 120,360 105 C400 90,440 115,480 95 C520 75,560 60,600 45 C640 30,680 50,720 38 C760 26,800 30,800 30" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Tooltip dot -->
+            <circle cx="600" cy="45" r="5" fill="#6366f1" stroke="#1e1b4b" stroke-width="2"/>
+            <line x1="600" y1="45" x2="600" y2="260" stroke="#6366f1" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
+          </svg>
+          <!-- Y labels -->
+          <div class="chart-y-labels">
+            <span>$200k</span>
+            <span>$160k</span>
+            <span>$120k</span>
+            <span>$80k</span>
+            <span>$40k</span>
+          </div>
+        </div>
+
+        <!-- X axis labels -->
+        <div class="chart-x-labels">
+          <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+        </div>
+      </div>
+
+      <!-- Allocation -->
+      <div class="allocation-card">
+        <h2 class="chart-card__title">Allocation</h2>
+        <div class="donut-wrap">
+          <svg viewBox="0 0 180 180" class="donut-chart">
+            <!-- BTC 42% -->
+            <circle cx="90" cy="90" r="70" fill="none" stroke="#f97316" stroke-width="24" stroke-dasharray="184.93 439.82" stroke-dashoffset="-40" transform="rotate(-90 90 90)"/>
+            <!-- ETH 28% -->
+            <circle cx="90" cy="90" r="70" fill="none" stroke="#6366f1" stroke-width="24" stroke-dasharray="123.15 501.60" stroke-dashoffset="-225" transform="rotate(-90 90 90)"/>
+            <!-- SOL 18% -->
+            <circle cx="90" cy="90" r="70" fill="none" stroke="#10b981" stroke-width="24" stroke-dasharray="79.17 545.58" stroke-dashoffset="-348" transform="rotate(-90 90 90)"/>
+            <!-- Others 12% -->
+            <circle cx="90" cy="90" r="70" fill="none" stroke="#a855f7" stroke-width="24" stroke-dasharray="52.78 571.97" stroke-dashoffset="-427" transform="rotate(-90 90 90)"/>
+            <text x="90" y="85" text-anchor="middle" fill="white" font-size="16" font-weight="800" font-family="Inter">42%</text>
+            <text x="90" y="104" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="Inter">BTC</text>
+          </svg>
+        </div>
+        <ul class="alloc-list">
+          <li class="alloc-item">
+            <span class="alloc-dot" style="background:#f97316"></span>
+            <span class="alloc-name">Bitcoin</span>
+            <span class="alloc-pct">42%</span>
+            <span class="alloc-val">$62,324</span>
+          </li>
+          <li class="alloc-item">
+            <span class="alloc-dot" style="background:#6366f1"></span>
+            <span class="alloc-name">Ethereum</span>
+            <span class="alloc-pct">28%</span>
+            <span class="alloc-val">$41,549</span>
+          </li>
+          <li class="alloc-item">
+            <span class="alloc-dot" style="background:#10b981"></span>
+            <span class="alloc-name">Solana</span>
+            <span class="alloc-pct">18%</span>
+            <span class="alloc-val">$26,710</span>
+          </li>
+          <li class="alloc-item">
+            <span class="alloc-dot" style="background:#a855f7"></span>
+            <span class="alloc-name">Others</span>
+            <span class="alloc-pct">12%</span>
+            <span class="alloc-val">$17,807</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ─ ASSETS TABLE + TRANSACTIONS ─ -->
+    <div class="bottom-section">
+
+      <!-- Assets Table -->
+      <div class="assets-card">
+        <div class="assets-card__header">
+          <h2>My Assets</h2>
+          <div class="assets-filter">
+            <button class="filter-btn filter-btn--active">All</button>
+            <button class="filter-btn">DeFi</button>
+            <button class="filter-btn">NFT</button>
+          </div>
+        </div>
+
+        <table class="assets-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Asset</th>
+              <th>Price</th>
+              <th>24h Change</th>
+              <th>Holdings</th>
+              <th>Value</th>
+              <th>7D Chart</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="assets-tbody">
+            <tr>
+              <td class="rank">1</td>
+              <td class="asset-name">
+                <div class="coin-icon coin-icon--btc">₿</div>
+                <div><strong>Bitcoin</strong><span>BTC</span></div>
+              </td>
+              <td class="price" data-id="btc">$67,412.80</td>
+              <td class="change change--up">▲ 2.14%</td>
+              <td>0.924 BTC</td>
+              <td class="value">$62,289.33</td>
+              <td><svg class="mini-chart" viewBox="0 0 80 30" fill="none"><path d="M0 25 L10 20 L20 22 L30 14 L40 16 L50 8 L60 10 L70 4 L80 6" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></td>
+              <td><button class="trade-btn">Trade</button></td>
+            </tr>
+            <tr>
+              <td class="rank">2</td>
+              <td class="asset-name">
+                <div class="coin-icon coin-icon--eth">Ξ</div>
+                <div><strong>Ethereum</strong><span>ETH</span></div>
+              </td>
+              <td class="price" data-id="eth">$3,541.20</td>
+              <td class="change change--up">▲ 3.87%</td>
+              <td>11.73 ETH</td>
+              <td class="value">$41,548.28</td>
+              <td><svg class="mini-chart" viewBox="0 0 80 30" fill="none"><path d="M0 22 L10 18 L20 20 L30 10 L40 14 L50 6 L60 9 L70 3 L80 5" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></td>
+              <td><button class="trade-btn">Trade</button></td>
+            </tr>
+            <tr>
+              <td class="rank">3</td>
+              <td class="asset-name">
+                <div class="coin-icon coin-icon--sol">◎</div>
+                <div><strong>Solana</strong><span>SOL</span></div>
+              </td>
+              <td class="price" data-id="sol">$178.45</td>
+              <td class="change change--down">▼ 1.23%</td>
+              <td>149.7 SOL</td>
+              <td class="value">$26,713.97</td>
+              <td><svg class="mini-chart" viewBox="0 0 80 30" fill="none"><path d="M0 8 L10 12 L20 10 L30 18 L40 15 L50 22 L60 18 L70 24 L80 20" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></td>
+              <td><button class="trade-btn">Trade</button></td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td class="asset-name">
+                <div class="coin-icon coin-icon--bnb">B</div>
+                <div><strong>BNB</strong><span>BNB</span></div>
+              </td>
+              <td class="price" data-id="bnb">$602.30</td>
+              <td class="change change--up">▲ 0.98%</td>
+              <td>18.2 BNB</td>
+              <td class="value">$10,961.86</td>
+              <td><svg class="mini-chart" viewBox="0 0 80 30" fill="none"><path d="M0 20 L10 16 L20 18 L30 12 L40 14 L50 8 L60 11 L70 6 L80 8" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></td>
+              <td><button class="trade-btn">Trade</button></td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td class="asset-name">
+                <div class="coin-icon coin-icon--uni">🦄</div>
+                <div><strong>Uniswap</strong><span>UNI</span></div>
+              </td>
+              <td class="price" data-id="uni">$9.82</td>
+              <td class="change change--down">▼ 2.56%</td>
+              <td>697 UNI</td>
+              <td class="value">$6,844.54</td>
+              <td><svg class="mini-chart" viewBox="0 0 80 30" fill="none"><path d="M0 10 L10 14 L20 12 L30 20 L40 17 L50 24 L60 20 L70 26 L80 22" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></td>
+              <td><button class="trade-btn">Trade</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="#" class="view-all">View all assets →</a>
+      </div>
+
+      <!-- Right column -->
+      <div class="right-column">
+
+        <!-- Quick Swap -->
+        <div class="swap-card">
+          <h2>Quick Swap</h2>
+          <div class="swap-from">
+            <div class="swap-token">
+              <div class="coin-icon coin-icon--eth" style="width:28px;height:28px;font-size:12px">Ξ</div>
+              <span>ETH</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <input type="number" class="swap-input" value="1.0" placeholder="0.0"/>
+            <span class="swap-balance">Balance: 11.73</span>
+          </div>
+
+          <div class="swap-arrow-row">
+            <button class="swap-arrow-btn" id="swap-flip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 16V4M7 4L3 8M7 4l4 4M17 8v12M17 20l4-4M17 20l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <div class="swap-from">
+            <div class="swap-token">
+              <div class="coin-icon coin-icon--sol" style="width:28px;height:28px;font-size:12px">◎</div>
+              <span>SOL</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polyline points="6 9 12 15 18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <input type="number" class="swap-input" value="19.86" placeholder="0.0"/>
+            <span class="swap-balance">Balance: 149.7</span>
+          </div>
+
+          <div class="swap-details">
+            <div class="swap-detail-row"><span>Rate</span><span>1 ETH = 19.86 SOL</span></div>
+            <div class="swap-detail-row"><span>Fee</span><span>~$2.40</span></div>
+            <div class="swap-detail-row"><span>Slippage</span><span>0.5%</span></div>
+          </div>
+
+          <button class="btn btn--primary btn--full">Swap Now</button>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="tx-card">
+          <div class="tx-card__header">
+            <h2>Recent Transactions</h2>
+            <a href="#" class="view-all-link">View all</a>
+          </div>
+          <ul class="tx-list">
+            <li class="tx-item">
+              <div class="tx-icon tx-icon--buy">↓</div>
+              <div class="tx-info">
+                <strong>Bought ETH</strong>
+                <span>2 mins ago · Ethereum</span>
+              </div>
+              <div class="tx-amount tx-amount--buy">+2.5 ETH</div>
+            </li>
+            <li class="tx-item">
+              <div class="tx-icon tx-icon--sell">↑</div>
+              <div class="tx-info">
+                <strong>Sold SOL</strong>
+                <span>1h ago · Solana</span>
+              </div>
+              <div class="tx-amount tx-amount--sell">−10 SOL</div>
+            </li>
+            <li class="tx-item">
+              <div class="tx-icon tx-icon--swap">⇄</div>
+              <div class="tx-info">
+                <strong>Swapped BNB→ETH</strong>
+                <span>3h ago · BSC</span>
+              </div>
+              <div class="tx-amount tx-amount--buy">+1.8 ETH</div>
+            </li>
+            <li class="tx-item">
+              <div class="tx-icon tx-icon--stake">🔒</div>
+              <div class="tx-info">
+                <strong>Staked ETH</strong>
+                <span>1d ago · Lido</span>
+              </div>
+              <div class="tx-amount">4.0 ETH</div>
+            </li>
+            <li class="tx-item">
+              <div class="tx-icon tx-icon--buy">↓</div>
+              <div class="tx-info">
+                <strong>Bought BTC</strong>
+                <span>2d ago · Bitcoin</span>
+              </div>
+              <div class="tx-amount tx-amount--buy">+0.05 BTC</div>
+            </li>
+          </ul>
+        </div>
+
+      </div><!-- /right-column -->
+    </div><!-- /bottom-section -->
+
+    <!-- ─ MARKET OVERVIEW ─ -->
+    <div class="market-card">
+      <div class="market-card__header">
+        <h2>Market Overview</h2>
+        <div class="market-tabs">
+          <button class="filter-btn filter-btn--active">Trending</button>
+          <button class="filter-btn">Top Gainers</button>
+          <button class="filter-btn">Top Losers</button>
+        </div>
+      </div>
+      <div class="market-grid">
+        <div class="market-item">
+          <div class="market-item__top">
+            <div class="coin-icon coin-icon--btc" style="width:40px;height:40px;font-size:16px">₿</div>
+            <span class="change change--up">▲ 2.14%</span>
+          </div>
+          <p class="market-name">Bitcoin</p>
+          <p class="market-price">$67,412</p>
+          <svg viewBox="0 0 80 30" fill="none" class="mini-chart"><path d="M0 25 L20 18 L40 12 L60 6 L80 3" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div class="market-item">
+          <div class="market-item__top">
+            <div class="coin-icon coin-icon--eth" style="width:40px;height:40px;font-size:16px">Ξ</div>
+            <span class="change change--up">▲ 3.87%</span>
+          </div>
+          <p class="market-name">Ethereum</p>
+          <p class="market-price">$3,541</p>
+          <svg viewBox="0 0 80 30" fill="none" class="mini-chart"><path d="M0 22 L20 15 L40 10 L60 6 L80 3" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div class="market-item">
+          <div class="market-item__top">
+            <div class="coin-icon coin-icon--sol" style="width:40px;height:40px;font-size:16px">◎</div>
+            <span class="change change--down">▼ 1.23%</span>
+          </div>
+          <p class="market-name">Solana</p>
+          <p class="market-price">$178</p>
+          <svg viewBox="0 0 80 30" fill="none" class="mini-chart"><path d="M0 5 L20 10 L40 15 L60 20 L80 25" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div class="market-item">
+          <div class="market-item__top">
+            <div class="coin-icon coin-icon--bnb" style="width:40px;height:40px;font-size:16px">B</div>
+            <span class="change change--up">▲ 0.98%</span>
+          </div>
+          <p class="market-name">BNB</p>
+          <p class="market-price">$602</p>
+          <svg viewBox="0 0 80 30" fill="none" class="mini-chart"><path d="M0 20 L20 15 L40 10 L60 7 L80 4" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div class="market-item">
+          <div class="market-item__top">
+            <div class="coin-icon" style="width:40px;height:40px;font-size:16px;background:linear-gradient(135deg,#2775ca,#5b9bd5)">$</div>
+            <span class="change change--up">▲ 0.01%</span>
+          </div>
+          <p class="market-name">USDC</p>
+          <p class="market-price">$1.00</p>
+          <svg viewBox="0 0 80 30" fill="none" class="mini-chart"><path d="M0 15 L80 15" stroke="#94a3b8" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <div class="market-item">
+          <div class="market-item__top">
+            <div class="coin-icon" style="width:40px;height:40px;font-size:16px;background:linear-gradient(135deg,#e84142,#ff6b6b)">A</div>
+            <span class="change change--up">▲ 5.63%</span>
+          </div>
+          <p class="market-name">Avalanche</p>
+          <p class="market-price">$38.40</p>
+          <svg viewBox="0 0 80 30" fill="none" class="mini-chart"><path d="M0 28 L20 22 L40 14 L60 8 L80 3" stroke="#10b981" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- /page-content -->
+</div><!-- /main-wrapper -->
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
